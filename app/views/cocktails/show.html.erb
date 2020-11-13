@@ -1,6 +1,17 @@
-<h2><%= @cocktail.name %></h2>
-<%= link_to "➕ Add new doses", new_cocktail_dose_path(@cocktail) %>
-<% @cocktail.doses.each do |dose| %>
-  <h3><%= dose.description %></h3> | <%= link_to "🗑", cocktail_dose_path(dose), method: :delete, data: { confirm: "Are you sure?" } %>
-<% end %>
-<%= link_to "⬅️ Back to all cocktails", cocktails_path %>
+<div class="container mt-5">
+  <h1><%= @cocktail.name %></h1>
+  <%= link_to "➕ Add new doses", new_cocktail_dose_path(@cocktail), class: 'btn' %>
+  <% @cocktail.doses.each do |dose| %>
+    <div class="card-product mt-2">
+      <%= cl_image_tag("upydylou3ykrg3fwbcby") %>
+      <div class="card-product-infos">
+        <h3> Description: <%= dose.description %></h3>
+        <h4> Ingredients: <%= dose.ingredient.name %></h4>
+        <%= link_to "🗑", cocktail_dose_path(dose), method: :delete, data: { confirm: "Are you sure?" }, class: 'btn'%>
+      </div>
+    </div>
+  <% end %>
+  <div class="mt-5 pt-5">
+    <%= link_to "⬅ Back to all cocktails", cocktails_path, class: 'btn btn-secondary' %>
+  </div>
+</div>

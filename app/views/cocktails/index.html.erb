@@ -1,21 +1,23 @@
-<div class="row row-cols-4">
-<% @cocktails.each do |cocktail| %>
-<div class="col">
-<div class="card" style="width: 18rem;">
-  <% if cocktail.photo.attached? %>
-    <%= cl_image_tag(cocktail.photo.key, class: 'card-img-top') %>
-    <% else %>
-    <%= cl_image_tag("upydylou3ykrg3fwbcby", class: 'card-img-top') %>
-  <% end %>
-  <!-- <img src="https://images.unsplash.com/photo-1470337458703-46ad1756a187?ixlib=rb-1.2.1&auto=format&fit=crop&w=1498&q=80" class="card-img-top" alt="card-img"> -->
-  <div class="card-body">
-    <h5 class="card-title"><%= cocktail.name %></h5>
-    <% cocktail.doses.each do |dose| %>
-    <p class="card-text"><%= dose.ingredient.name %></p>
+<div class="container mt-5">
+  <div id="cards" class="row justify-content-between">
+    <% @cocktails.each do |cocktail| %>
+      <div class="col">
+        <div class="card mb-5" style="width: 18rem;">
+          <% if cocktail.photo.attached? %>
+            <%= cl_image_tag(cocktail.photo.key, class: 'card-img-top') %>
+          <% else %>
+            <%= cl_image_tag("upydylou3ykrg3fwbcby", class: 'card-img-top w-2') %>
+          <% end %>
+          <!-- <img src="https://images.unsplash.com/photo-1470337458703-46ad1756a187?ixlib=rb-1.2.1&auto=format&fit=crop&w=1498&q=80" class="card-img-top" alt="card-img"> -->
+          <div class="card-body">
+            <h5 class="card-title"><%= cocktail.name %></h5>
+            <% cocktail.doses.each do |dose| %>
+              <p class="card-text"><%= dose.ingredient.name %></p>
+            <% end %>
+            <%= link_to "More info", cocktail_path(cocktail), class: 'btn btn-primary' %>
+          </div>
+        </div>
+      </div>
     <% end %>
-    <%= link_to "More info", cocktail_path(cocktail), class: 'btn btn-primary' %>
   </div>
-</div>
-</div>
-<% end %>
 </div>
