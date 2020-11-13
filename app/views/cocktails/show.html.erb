@@ -4,11 +4,10 @@
   <% @cocktail.doses.each do |dose| %>
     <div class="card-product mt-2">
       <%= cl_image_tag("upydylou3ykrg3fwbcby") %>
-      <div class="card-product-infos">
-        <h3> Description: <%= dose.description %></h3>
-        <h4> Ingredients: <%= dose.ingredient.name %></h4>
-        <%= link_to "🗑", cocktail_dose_path(dose), method: :delete, data: { confirm: "Are you sure?" }, class: 'btn'%>
+      <div class="card-product-infos pt-3">
+        <h3> Ingredients:</h3> <h5><%= dose.ingredient.name %></h5> <p><%= dose.description %></p>
       </div>
+        <%= link_to "🗑", cocktail_dose_path(dose), method: :delete, data: { confirm: "Are you sure?" }, class: 'btn'%>
     </div>
   <% end %>
   <div class="mt-5 pt-5">
